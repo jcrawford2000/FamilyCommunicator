@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <title>Testing Google OAuth</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+        function onSignIn(googleUser) {
+	  console.log('In onSignIn');
+          var profile = googleUser.getBasicProfile();
+          $('#ID').html('ID:' + profile.getId());
+          console.log('ID:' + profile.getId());
+          $('#Name').html('Name:' + profile.getName());
+          console.log('Name:' + profile.getName());
+          $('#ImageURL').html('<img src=\'' + profile.getImageUrl() + '\'>');
+          console.log('Image URL:' + profile.getImageUrl());
+          $('#Email').html('Email:' + profile.getEmail());
+          console.log('Email:' + profile.getEmail());
+          $('#gToken').html('Token:' + googleUser.getAuthResponse().id_token);
+        }
+    </script>          
+    <meta name="google-signin-client_id" content="241784313684-1j9oj0sfpfbs4mb64bmh32qd2d2673bj.apps.googleusercontent.com">
+  </head>
+  <body>
+    <h1>Welcome to my Page</h1>
+    <p>Sign In</p>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <div id="ID"></div>
+    <div id="Name"></div>
+    <div id="ImageURL"></div>
+    <div id="Email"></div>
+    <div id="gToken"></div>
+  </body>
+</html>
+
